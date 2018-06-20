@@ -6,6 +6,7 @@ import java.io.IOException;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 public class ScreenShot {
@@ -16,7 +17,9 @@ public class ScreenShot {
 		EventFiringWebDriver edriver=new EventFiringWebDriver(driver);
 		File src=edriver.getScreenshotAs(OutputType.FILE);
 		File dst=new File(fs.getAbsolutePath());
-		FileUtils.copyFile(src, dst);
+//		FileUtils.copyFile(src, dst);
+//		this can also be used
+		FileHandler.copy(src,dst);
 		String path=fs.getAbsolutePath();
 		return path;
 	}
